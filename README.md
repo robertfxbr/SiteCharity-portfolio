@@ -82,3 +82,7 @@ Se a CDN estiver indisponivel, o modulo de datas cai em `Date` e
 Padrao GitFlow: `main` guarda as versoes publicadas, `develop` concentra o
 desenvolvimento, `feature/*` isola cada funcionalidade, `release/*` prepara o
 lancamento e `hotfix/*` corrige falhas a partir de `main`.
+
+## Licenca
+
+Distribuido sob a licenca MIT. Consulte o arquivo `LICENSE` para os termos completos.
