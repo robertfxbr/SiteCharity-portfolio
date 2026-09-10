@@ -1,33 +1,47 @@
-<section class="secao">
-  <h1>Single Page Application sem recarregar a pagina</h1>
-  <p>
-    Esta pagina troca de conteudo sem solicitar um novo documento ao servidor. A navegacao
-    altera apenas o fragmento da URL, e o roteador intercepta essa mudanca para injetar o
-    conteudo correspondente na div principal.
-  </p>
+<section class="secao secao--hero" id="apresentacao" aria-labelledby="titulo-ong-esperanca-solidaria">
+  <div class="hero__texto">
+    <h1 id="titulo-ong-esperanca-solidaria">ONG Esperança Solidária</h1>
+    <p class="destaque">
+      A ONG Esperança Solidária atua no apoio a pessoas em situação de vulnerabilidade
+      social, promovendo ações de inclusão, educação e assistência à comunidade.
+    </p>
+    <p>
+      Desde 2018 atendemos famílias em três frentes permanentes: educação de crianças e
+      jovens, segurança alimentar e acesso a cuidados básicos de saúde. Cada real doado e
+      cada hora voluntária são aplicados diretamente nos projetos em andamento.
+    </p>
 
-  <div class="barra-filtro">
-    <label for="filtro-nivel">Filtrar por nivel</label>
-    <select id="filtro-nivel">
-      <option value="todos">Todos</option>
-      <option value="Basico">Basico</option>
-      <option value="Intermediario">Intermediario</option>
-      <option value="Avancado">Avancado</option>
-    </select>
+    <div class="acoes">
+      <a class="botao botao--destaque" href="#/projetos">Fazer uma doação</a>
+      <a class="botao botao--contorno" href="#/cadastro">Quero ser voluntário</a>
+    </div>
   </div>
 
-  <!-- Molde inerte: o navegador nao renderiza nem baixa recursos daqui dentro.
-       O script clona este conteudo uma vez para cada item da fonte de dados. -->
-  <template id="tpl-cartao">
-    <li class="cartao">
-      <span class="etiqueta"></span>
-      <h2></h2>
-      <p></p>
-      <small></small>
-    </li>
-  </template>
+  <img src="../imagens/acao-social.jpg" width="738" height="415" alt="Grupo de voluntários unindo as mãos em sinal de cooperação">
+</section>
 
-  <ul class="cartoes" id="lista-servicos" aria-live="polite"></ul>
+<section class="secao" id="numeros" aria-labelledby="titulo-a-nossa-atuacao-em-numeros">
+  <h2 id="titulo-a-nossa-atuacao-em-numeros">A nossa atuação em números</h2>
+  <ul class="numeros">
+    <li><strong>1.240</strong><span>pessoas atendidas por ano</span></li>
+    <li><strong>3</strong><span>projetos permanentes</span></li>
+    <li><strong>87</strong><span>voluntários ativos</span></li>
+  </ul>
+</section>
 
-  <a class="botao" href="#/contato">Ir para o formulario</a>
+<section class="secao" id="destaques" aria-labelledby="titulo-projetos-em-destaque">
+  <h2 id="titulo-projetos-em-destaque">Projetos em destaque</h2>
+  <ul class="resumos" id="resumo-projetos"></ul>
+  <a class="botao botao--contorno" href="#/projetos">Ver todos os projetos</a>
+</section>
+
+<section class="secao" id="contato-rapido" aria-labelledby="titulo-entre-em-contato">
+  <h2 id="titulo-entre-em-contato">Entre em contato</h2>
+  <p>Fale com a nossa equipe para parcerias, doações ou dúvidas sobre os projetos.</p>
+
+  <address class="contato">
+    <p>E-mail: <a href="mailto:contato@esperancasolidaria.org.br">contato@esperancasolidaria.org.br</a></p>
+    <p>Telefone: <a href="tel:+5511999999999">(11) 99999-9999</a></p>
+    <p>Endereço: Rua da Solidariedade, 100 - São Paulo/SP</p>
+  </address>
 </section>

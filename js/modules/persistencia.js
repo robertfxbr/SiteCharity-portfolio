@@ -7,6 +7,7 @@ const PREFIXO = 'atividade3:';
 
 export const CHAVES = {
   rascunho: PREFIXO + 'rascunho-contato',
+  rascunhoCadastro: PREFIXO + 'rascunho-cadastro',
   preferencias: PREFIXO + 'preferencias'
 };
 
@@ -47,7 +48,7 @@ export function remover(chave) {
 
 // Preferencias visuais sao gravadas por partes, sem apagar as demais chaves.
 export function lerPreferencias() {
-  return ler(CHAVES.preferencias, { tema: 'claro', filtroNivel: 'todos' });
+  return ler(CHAVES.preferencias, { tema: 'claro', filtroArea: 'todos' });
 }
 
 export function gravarPreferencia(campo, valor) {

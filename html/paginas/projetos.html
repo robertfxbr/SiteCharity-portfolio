@@ -1,0 +1,85 @@
+<header class="secao secao--pagina">
+  <h1>Projetos</h1>
+  <p class="destaque">
+    Conheça as iniciativas sociais mantidas pela ONG Esperança Solidária e escolha
+    como participar: contribuindo com recursos ou com o seu tempo.
+  </p>
+
+  <nav class="indice" aria-label="Índice desta página">
+    <a href="#apresentacao-projetos">Apresentação dos projetos</a>
+    <a href="#projetos-andamento">Projetos em andamento</a>
+    <a href="#doacoes">Doações</a>
+    <a href="#voluntariado">Voluntariado</a>
+  </nav>
+</header>
+
+<section class="secao" id="apresentacao-projetos" aria-labelledby="titulo-apresentacao-dos-projetos">
+  <h2 id="titulo-apresentacao-dos-projetos">Apresentação dos projetos</h2>
+  <p>
+    Atuamos em três frentes permanentes, escolhidas a partir das necessidades
+    levantadas junto às famílias atendidas: educação, alimentação e saúde. Cada
+    projeto tem coordenação própria, meta de atendimento e prestação de contas.
+  </p>
+  <p>
+    Os projetos em andamento aparecem no bloco seguinte, com a área de atuação e
+    o número de pessoas atendidas. Logo depois estão as duas formas de participar.
+  </p>
+</section>
+
+<section class="secao" id="projetos-andamento" aria-labelledby="titulo-projetos-em-andamento">
+  <h2 id="titulo-projetos-em-andamento">Projetos em andamento</h2>
+
+  <div class="barra-filtro">
+    <label for="filtro-area">Filtrar por área</label>
+    <select id="filtro-area">
+      <option value="todos">Todas as áreas</option>
+      <option value="Educacao">Educação</option>
+      <option value="Alimentacao">Alimentação</option>
+      <option value="Saude">Saúde</option>
+    </select>
+  </div>
+
+  <!-- Molde inerte: o navegador nao renderiza nem baixa recursos daqui dentro.
+       O script clona este conteudo uma vez para cada projeto da fonte de dados. -->
+  <template id="tpl-projeto">
+    <li>
+      <article class="cartao">
+        <img class="cartao__imagem" width="600" height="360" alt="">
+        <span class="etiqueta"></span>
+        <h3></h3>
+        <p class="cartao__descricao"></p>
+        <p class="cartao__meta"></p>
+      </article>
+    </li>
+  </template>
+
+  <ul class="cartoes" id="lista-projetos" aria-live="polite"></ul>
+</section>
+
+<section class="secao secao--alt" id="doacoes" aria-labelledby="titulo-doacoes">
+  <h2 id="titulo-doacoes">Doações</h2>
+  <p>
+    A contribuição financeira sustenta a compra de alimentos, material escolar e
+    insumos de saúde. Qualquer valor é aplicado integralmente nos projetos acima.
+  </p>
+  <ul class="lista-simples">
+    <li>Doação única ou mensal via transferência bancária</li>
+    <li>Chave PIX: contato@esperancasolidaria.org.br</li>
+    <li>Doação de alimentos e roupas na sede, de segunda a sexta</li>
+  </ul>
+  <a class="botao botao--destaque" href="#/contato">Fazer uma doação</a>
+</section>
+
+<section class="secao" id="voluntariado" aria-labelledby="titulo-voluntariado">
+  <h2 id="titulo-voluntariado">Voluntariado</h2>
+  <p>
+    Quem contribui com tempo atua diretamente nas frentes de educação, alimentação e
+    saúde. Não é exigida experiência prévia: a formação inicial é oferecida pela ONG.
+  </p>
+  <ul class="lista-simples">
+    <li>Carga mínima sugerida de quatro horas por mês</li>
+    <li>Atividades presenciais em São Paulo e apoio remoto</li>
+    <li>Formação inicial de duas horas antes da primeira atuação</li>
+  </ul>
+  <a class="botao botao--contorno" href="#/cadastro">Quero ser voluntário</a>
+</section>

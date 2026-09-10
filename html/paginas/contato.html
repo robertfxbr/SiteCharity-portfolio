@@ -1,27 +1,46 @@
-<section class="secao">
-  <h1>Contato</h1>
-  <p>Formulario validado no proprio cliente, sem recarregar o documento.</p>
+<section class="secao" aria-labelledby="titulo-contato-e-voluntariado">
+  <h1 id="titulo-contato-e-voluntariado">Contato e voluntariado</h1>
+  <p class="destaque">
+    Preencha o formulário e a nossa equipe entra em contato com as oportunidades
+    disponíveis na sua região, ou com as informações sobre doações.
+  </p>
 
   <form class="formulario" id="form-contato" novalidate>
     <div class="campo">
-      <label for="nome">Nome</label>
-      <input type="text" id="nome" name="nome" autocomplete="name">
-      <span class="erro" data-erro="nome"></span>
+      <label for="nome">Nome completo</label>
+      <input type="text" id="nome" name="nome" autocomplete="name" aria-describedby="erro-nome">
+      <span class="erro" id="erro-nome" data-erro="nome"></span>
     </div>
 
     <div class="campo">
       <label for="email">E-mail</label>
-      <input type="email" id="email" name="email" autocomplete="email">
-      <span class="erro" data-erro="email"></span>
+      <input type="email" id="email" name="email" autocomplete="email" aria-describedby="erro-email">
+      <span class="erro" id="erro-email" data-erro="email"></span>
+    </div>
+
+    <div class="campo">
+      <label for="area">Área de interesse</label>
+      <select id="area" name="area">
+        <option value="Educacao">Educação</option>
+        <option value="Alimentacao">Alimentação</option>
+        <option value="Saude">Saúde</option>
+        <option value="Doacao">Quero doar</option>
+      </select>
     </div>
 
     <div class="campo">
       <label for="mensagem">Mensagem</label>
-      <textarea id="mensagem" name="mensagem" rows="5"></textarea>
-      <span class="erro" data-erro="mensagem"></span>
+      <textarea id="mensagem" name="mensagem" rows="5" aria-describedby="erro-mensagem"></textarea>
+      <span class="erro" id="erro-mensagem" data-erro="mensagem"></span>
     </div>
 
-    <button class="botao" type="submit">Enviar</button>
+    <button class="botao botao--destaque" type="submit">Enviar mensagem</button>
     <p class="feedback" id="feedback" role="status"></p>
   </form>
+
+  <address class="contato">
+    <p>E-mail: <a href="mailto:contato@esperancasolidaria.org.br">contato@esperancasolidaria.org.br</a></p>
+    <p>Telefone: <a href="tel:+5511999999999">(11) 99999-9999</a></p>
+    <p>Endereço: Rua da Solidariedade, 100 - São Paulo/SP</p>
+  </address>
 </section>

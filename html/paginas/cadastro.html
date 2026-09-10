@@ -1,0 +1,117 @@
+<header class="secao secao--pagina">
+  <h1>Cadastro de voluntário</h1>
+  <p class="destaque">
+    Preencha os dados abaixo para entrar no cadastro de voluntários da ONG
+    Esperança Solidária. Os campos marcados com asterisco são obrigatórios.
+  </p>
+</header>
+
+<section class="secao" aria-labelledby="titulo-formulario-de-cadastro">
+  <h2 id="titulo-formulario-de-cadastro">Formulário de cadastro</h2>
+
+  <form class="formulario" id="form-cadastro" novalidate>
+    <fieldset>
+      <legend>Dados pessoais</legend>
+
+      <div class="campo">
+        <label for="nome-completo">Nome completo *</label>
+        <input type="text" id="nome-completo" name="nomeCompleto" autocomplete="name"
+               required minlength="3" maxlength="80"
+               aria-describedby="erro-nomeCompleto">
+        <span class="erro" id="erro-nomeCompleto" data-erro="nomeCompleto"></span>
+      </div>
+
+      <div class="campo">
+        <label for="cpf">CPF *</label>
+        <input type="text" id="cpf" name="cpf" inputmode="numeric"
+               required maxlength="14" pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}"
+               title="Formato esperado: 000.000.000-00"
+               placeholder="000.000.000-00" aria-describedby="erro-cpf">
+        <span class="erro" id="erro-cpf" data-erro="cpf"></span>
+      </div>
+
+      <div class="campo">
+        <label for="nascimento">Data de nascimento *</label>
+        <input type="date" id="nascimento" name="nascimento" autocomplete="bday"
+               required min="1915-01-01" max="2010-12-31"
+               aria-describedby="erro-nascimento">
+        <span class="erro" id="erro-nascimento" data-erro="nascimento"></span>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Contato</legend>
+
+      <div class="campo">
+        <label for="email-cadastro">E-mail *</label>
+        <input type="email" id="email-cadastro" name="email" autocomplete="email"
+               required maxlength="120"
+               aria-describedby="erro-email">
+        <span class="erro" id="erro-email" data-erro="email"></span>
+      </div>
+
+      <div class="campo">
+        <label for="telefone">Telefone *</label>
+        <input type="tel" id="telefone" name="telefone" autocomplete="tel"
+               required maxlength="15" pattern="\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}"
+               title="Formato esperado: (11) 90000-0000"
+               placeholder="(11) 90000-0000" aria-describedby="erro-telefone">
+        <span class="erro" id="erro-telefone" data-erro="telefone"></span>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Endereço</legend>
+
+      <div class="campo">
+        <label for="cep">CEP *</label>
+        <input type="text" id="cep" name="cep" inputmode="numeric" autocomplete="postal-code"
+               required maxlength="9" pattern="[0-9]{5}-[0-9]{3}"
+               title="Formato esperado: 00000-000"
+               placeholder="00000-000" aria-describedby="erro-cep">
+        <span class="erro" id="erro-cep" data-erro="cep"></span>
+      </div>
+
+      <div class="campo">
+        <label for="endereco">Endereço *</label>
+        <input type="text" id="endereco" name="endereco" autocomplete="address-line1"
+               required minlength="5" maxlength="120"
+               aria-describedby="erro-endereco">
+        <span class="erro" id="erro-endereco" data-erro="endereco"></span>
+      </div>
+
+      <div class="campo">
+        <label for="cidade">Cidade *</label>
+        <input type="text" id="cidade" name="cidade" autocomplete="address-level2"
+               required minlength="3" maxlength="60"
+               aria-describedby="erro-cidade">
+        <span class="erro" id="erro-cidade" data-erro="cidade"></span>
+      </div>
+
+      <div class="campo">
+        <label for="estado">Estado *</label>
+        <select id="estado" name="estado" autocomplete="address-level1" required aria-describedby="erro-estado">
+          <option value="">Selecione</option>
+          <option value="AC">Acre</option><option value="AL">Alagoas</option>
+          <option value="AP">Amapá</option><option value="AM">Amazonas</option>
+          <option value="BA">Bahia</option><option value="CE">Ceará</option>
+          <option value="DF">Distrito Federal</option><option value="ES">Espírito Santo</option>
+          <option value="GO">Goiás</option><option value="MA">Maranhão</option>
+          <option value="MT">Mato Grosso</option><option value="MS">Mato Grosso do Sul</option>
+          <option value="MG">Minas Gerais</option><option value="PA">Pará</option>
+          <option value="PB">Paraíba</option><option value="PR">Paraná</option>
+          <option value="PE">Pernambuco</option><option value="PI">Piauí</option>
+          <option value="RJ">Rio de Janeiro</option><option value="RN">Rio Grande do Norte</option>
+          <option value="RS">Rio Grande do Sul</option><option value="RO">Rondônia</option>
+          <option value="RR">Roraima</option><option value="SC">Santa Catarina</option>
+          <option value="SP">São Paulo</option><option value="SE">Sergipe</option>
+          <option value="TO">Tocantins</option>
+        </select>
+        <span class="erro" id="erro-estado" data-erro="estado"></span>
+      </div>
+    </fieldset>
+
+    <button class="botao botao--destaque" type="submit">Enviar cadastro</button>
+    <p class="feedback" id="feedback-cadastro" role="status"></p>
+  </form>
+</section>

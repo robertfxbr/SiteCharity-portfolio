@@ -1,0 +1,17 @@
+{
+  "name": "ong-esperanca-solidaria",
+  "version": "1.2.0",
+  "description": "Site institucional da ONG Esperanca Solidaria: SPA em JavaScript modular, sem framework.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx --yes serve@14 . -l 5500",
+    "build": "node build.js",
+    "preview": "npx --yes serve@14 dist -l 5000"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "sharp": "^0.35.4"
+  },
+  "license": "MIT"
+}

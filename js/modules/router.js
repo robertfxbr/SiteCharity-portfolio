@@ -4,7 +4,8 @@
 
 const rotas = {
   '/': 'paginas/home.html',
-  '/sobre': 'paginas/sobre.html',
+  '/projetos': 'paginas/projetos.html',
+  '/cadastro': 'paginas/cadastro.html',
   '/contato': 'paginas/contato.html'
 };
 
