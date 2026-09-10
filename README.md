@@ -154,6 +154,29 @@ corresponde a uma versao com tag.
 O `dist/404.html` e uma copia do `index.html`: qualquer caminho desconhecido
 devolve a aplicacao, que entao resolve a rota pelo hash.
 
+## Verificacao e testes
+
+O projeto ainda nao tem suite automatizada. A verificacao e manual e segue este
+roteiro a cada alteracao relevante:
+
+```bash
+npm run build          # aborta se a reescrita de caminhos falhar
+npm run preview        # serve dist/ em http://localhost:5000
+```
+
+1. Percorrer as quatro rotas e conferir o console sem erros
+2. Filtrar projetos por area e recarregar: a escolha deve voltar do localStorage
+3. Enviar os dois formularios vazios e conferir as mensagens por campo
+4. Enviar o cadastro com CPF de digitos repetidos, que deve ser recusado
+5. Navegar so pelo teclado, comecando pelo link de salto
+6. Alternar o tema e recarregar: a preferencia deve persistir
+
+Validacao externa: HTML pelo Nu Html Checker e CSS pelo Jigsaw, ambos com zero
+erros na ultima execucao.
+
+A ausencia de testes automatizados esta registrada na issue #11, com a lista dos
+modulos a cobrir primeiro.
+
 ## Fluxo de versionamento
 
 Padrao GitFlow: `main` guarda as versoes publicadas, `develop` concentra o
