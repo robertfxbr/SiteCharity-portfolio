@@ -6,6 +6,7 @@
 //      HTML vindo de fora.
 
 import { servicos } from '../dados/servicos.js';
+import { lerPreferencias, gravarPreferencia } from './persistencia.js';
 
 // --- Estrategia 1: interpolacao de string -----------------------------------
 
@@ -68,8 +69,14 @@ function preencherHome() {
 
   if (!alvo) return;
 
+  // A escolha anterior volta do localStorage assim que a home e renderizada.
+  if (filtro) {
+    filtro.value = lerPreferencias().filtroNivel;
+  }
+
   const aplicar = () => {
     const nivel = filtro ? filtro.value : 'todos';
+    if (filtro) gravarPreferencia('filtroNivel', nivel);
     const lista = nivel === 'todos'
       ? servicos
       : servicos.filter((item) => item.nivel === nivel);
