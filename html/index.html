@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atividade 3 | Single Page Application</title>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <header class="cabecalho">
+    <a class="marca" href="#/">Atividade&nbsp;3</a>
+
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="menu">
+      <span class="menu-toggle__barra"></span>
+      <span class="visually-hidden">Abrir menu</span>
+    </button>
+
+    <nav class="menu" id="menu">
+      <a class="nav-link" href="#/">Início</a>
+      <a class="nav-link" href="#/sobre">Sobre</a>
+      <a class="nav-link" href="#/contato">Contato</a>
+    </nav>
+  </header>
+
+  <main id="app" class="conteudo">
+    <p class="carregando">Carregando...</p>
+  </main>
+
+  <footer class="rodape">
+    <p>Projeto academico de front-end. Roteamento client-side com hash e manipulacao do DOM.</p>
+  </footer>
+
+  <script type="module" src="../js/main.js"></script>
+</body>
+</html>
