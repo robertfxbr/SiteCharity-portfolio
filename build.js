@@ -143,6 +143,8 @@ async function copiarFragmentos() {
 }
 
 async function otimizarImagens() {
+  // Apenas os originais entram: os .webp de dist sao gerados aqui a partir
+  // deles, entao os .webp da origem seriam duplicata.
   const arquivos = (await readdir('imagens')).filter((a) => ['.jpg', '.jpeg', '.png'].includes(extname(a).toLowerCase()));
   let antes = 0;
   let depois = 0;

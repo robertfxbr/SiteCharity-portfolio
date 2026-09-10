@@ -17,7 +17,13 @@
     </div>
   </div>
 
-  <img src="../imagens/acao-social.jpg" width="738" height="415" alt="Grupo de voluntários unindo as mãos em sinal de cooperação">
+  <!-- O navegador escolhe o primeiro formato que reconhece. Quem nao suporta
+       WebP recebe o JPEG do <img>, que tambem e o fallback de qualquer erro. -->
+  <picture>
+    <source srcset="../imagens/acao-social.webp" type="image/webp">
+    <img src="../imagens/acao-social.jpg" width="738" height="415"
+         alt="Grupo de voluntários unindo as mãos em sinal de cooperação">
+  </picture>
 </section>
 
 <section class="secao" id="numeros" aria-labelledby="titulo-a-nossa-atuacao-em-numeros">
