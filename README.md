@@ -113,6 +113,47 @@ Contrastes medidos (minimo AA: 4.5:1 para texto, 3:1 para componentes):
 | Borda de campo | 4.54:1 | 3.99:1 |
 | Anel de foco | 12.36:1 | 8.62:1 |
 
+## Build de producao
+
+```bash
+npm install
+npm run build     # gera dist/
+npm run preview   # serve dist/ em http://localhost:5000
+```
+
+O `build.js` executa seis etapas: empacota os dez modulos ES em um unico
+`app.js` minificado, concatena e minifica as tres folhas de estilo em
+`app.css`, move o `index.html` para a raiz reescrevendo os caminhos, minifica
+os fragmentos de rota, recomprime as imagens com mozjpeg e gera as versoes
+WebP. Se a reescrita de caminhos falhar, o build aborta em vez de publicar um
+site sem estilo.
+
+Resultado da ultima execucao:
+
+| Recurso | Antes | Depois | Reducao |
+|---|---|---|---|
+| JavaScript (10 arquivos) | 19,8 kB | 7,6 kB | 61% |
+| CSS (3 arquivos) | 15,3 kB | 10,1 kB | 33% |
+| index.html | 2,2 kB | 1,7 kB | 25% |
+| Fragmentos de rota | 6,7 kB | 5,7 kB | 14% |
+| Imagens (4 arquivos) | 70,3 kB | 39,2 kB | 44% |
+| **Total** | **114,3 kB** | **64,3 kB** | **44%** |
+
+Requisicoes na primeira carga caem de 15 para 5, ja que dez modulos viram um
+arquivo e tres folhas de estilo viram outra.
+
+## Deploy
+
+Publicado no GitHub Pages pelo workflow `.github/workflows/deploy.yml`, que
+roda a cada push na `main`. O job de build gera o `dist/`, confere que os
+arquivos essenciais existem e sobe o artefato; o job de deploy publica.
+
+Como a `main` so recebe merge de `release/*` e `hotfix/*`, cada publicacao
+corresponde a uma versao com tag.
+
+O `dist/404.html` e uma copia do `index.html`: qualquer caminho desconhecido
+devolve a aplicacao, que entao resolve a rota pelo hash.
+
 ## Fluxo de versionamento
 
 Padrao GitFlow: `main` guarda as versoes publicadas, `develop` concentra o
