@@ -8,11 +8,13 @@ import { iniciarValidacao } from './modules/validacao.js';
 import { iniciarTemplates } from './modules/templates.js';
 import { iniciarTema } from './modules/tema.js';
 import { iniciarDatas } from './modules/datas.js';
+import { iniciarAncoras } from './modules/ancoras.js';
 
 function iniciar() {
   iniciarDatas();
   iniciarTema();
   iniciarMenu();
+  iniciarAncoras();
   iniciarValidacao();
   iniciarTemplates();
   iniciarRotas();
