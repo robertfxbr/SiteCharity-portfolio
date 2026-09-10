@@ -294,3 +294,44 @@ code {
     padding: 20px;
   }
 }
+
+/* Cartoes gerados por template */
+
+.barra-filtro {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  font-size: 0.92rem;
+}
+
+.barra-filtro select {
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 7px 10px;
+  background-color: var(--cor-superficie);
+}
+
+.etiqueta {
+  display: inline-block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--cor-primaria);
+  background-color: var(--cor-fundo);
+  border-radius: 999px;
+  padding: 2px 9px;
+  margin-bottom: 8px;
+}
+
+.cartao small {
+  display: block;
+  margin-top: 8px;
+  color: var(--cor-texto-suave);
+  font-size: 0.82rem;
+}
+
+.vazio {
+  color: var(--cor-texto-suave);
+  font-style: italic;
+}

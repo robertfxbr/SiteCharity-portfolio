@@ -4,9 +4,11 @@
 
 import { iniciarRotas } from './modules/router.js';
 import { iniciarMenu } from './modules/menu.js';
+import { iniciarTemplates } from './modules/templates.js';
 
 function iniciar() {
   iniciarMenu();
+  iniciarTemplates();
   iniciarRotas();
 }
 
