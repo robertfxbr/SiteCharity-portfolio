@@ -5,6 +5,7 @@
 // depois que o main.js ja executou.
 
 import { gravar, ler, remover, CHAVES } from './persistencia.js';
+import { relativo } from './datas.js';
 
 // Expressoes regulares usadas nos criterios de formato.
 // Nome: apenas letras (inclusive acentuadas), espacos, apostrofo, ponto e
@@ -99,7 +100,8 @@ function restaurar() {
 
   const aviso = document.getElementById('feedback');
   if (aviso) {
-    aviso.textContent = 'Rascunho recuperado do localStorage.';
+    // relativo() vem do modulo que encapsula o Day.js.
+    aviso.textContent = 'Rascunho recuperado, salvo ' + relativo(rascunho.salvoEm) + '.';
   }
 }
 

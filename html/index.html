@@ -33,6 +33,13 @@
     <p>Projeto academico de front-end. Roteamento client-side com hash e manipulacao do DOM.</p>
   </footer>
 
+  <!-- Biblioteca externa via CDN: core, plugin de tempo relativo e locale.
+       defer garante que os tres estejam avaliados antes do modulo principal,
+       sem bloquear a renderizacao do documento. -->
+  <script defer src="https://cdn.jsdelivr.net/npm/dayjs@1.11.10/dayjs.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/dayjs@1.11.10/plugin/relativeTime.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/dayjs@1.11.10/locale/pt-br.js"></script>
+
   <script type="module" src="../js/main.js"></script>
 </body>
 </html>
