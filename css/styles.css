@@ -350,6 +350,20 @@ textarea:focus-visible {
 
 /* Formulario */
 
+fieldset {
+  border: 1px solid var(--color-neutral-300);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  display: grid;
+  gap: var(--space-3);
+}
+
+legend {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary-dark);
+  padding-inline: var(--space-1);
+}
+
 .formulario {
   display: grid;
   gap: var(--space-3);
