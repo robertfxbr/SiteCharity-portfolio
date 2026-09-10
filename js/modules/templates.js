@@ -5,39 +5,44 @@
 //   2. <template> + cloneNode + textContent para dados dinamicos, sem parsear
 //      HTML vindo de fora.
 
-import { servicos } from '../dados/servicos.js';
+import { projetos } from '../dados/projetos.js';
 import { lerPreferencias, gravarPreferencia } from './persistencia.js';
+import { relativo } from './datas.js';
+
+const ROTULO_AREA = {
+  Educacao: 'Educação',
+  Alimentacao: 'Alimentação',
+  Saude: 'Saúde'
+};
 
 // --- Estrategia 1: interpolacao de string -----------------------------------
 
-const cartaoTemplate = (item) => `
-  <li class="cartao" data-id="${item.id}">
-    <span class="etiqueta">${item.nivel}</span>
-    <h2>${item.titulo}</h2>
-    <p>${item.descricao}</p>
-    <small>${item.horas} horas</small>
+const resumoTemplate = (item) => `
+  <li class="resumo" data-id="${item.id}">
+    <strong>${item.titulo}</strong>
+    <span>${ROTULO_AREA[item.area] || item.area}</span>
   </li>`;
 
-export function renderizarCartoes(lista, alvo) {
+export function renderizarResumo(lista, alvo) {
   if (!alvo) return;
 
   if (!lista.length) {
-    alvo.innerHTML = '<li class="vazio">Nenhum item encontrado.</li>';
+    alvo.innerHTML = '<li class="vazio">Nenhum projeto cadastrado.</li>';
     return;
   }
 
   // map transforma cada objeto em um trecho de HTML e join concatena tudo
   // em uma unica string, escrita no DOM de uma so vez.
-  alvo.innerHTML = lista.map(cartaoTemplate).join('');
+  alvo.innerHTML = lista.map(resumoTemplate).join('');
 }
 
 // --- Estrategia 2: clonagem do elemento <template> --------------------------
 
-export function renderizarPorTemplate(lista, alvo, template) {
+export function renderizarProjetos(lista, alvo, template) {
   if (!alvo || !template) return;
 
   if (!lista.length) {
-    alvo.innerHTML = '<li class="vazio">Nenhum item encontrado.</li>';
+    alvo.innerHTML = '<li class="vazio">Nenhum projeto nesta área.</li>';
     return;
   }
 
@@ -47,12 +52,19 @@ export function renderizarPorTemplate(lista, alvo, template) {
 
   lista.forEach((item) => {
     const clone = template.content.cloneNode(true);
+    const imagem = clone.querySelector('.cartao__imagem');
 
     clone.querySelector('.cartao').dataset.id = item.id;
-    clone.querySelector('.etiqueta').textContent = item.nivel;
-    clone.querySelector('h2').textContent = item.titulo;
-    clone.querySelector('p').textContent = item.descricao;
-    clone.querySelector('small').textContent = `${item.horas} horas`;
+    // loading antes do src: o atributo precisa existir quando a URL e
+    // atribuida, senao o navegador ja inicia o download.
+    imagem.loading = 'lazy';
+    imagem.src = item.imagem;
+    imagem.alt = item.alt;
+    clone.querySelector('.etiqueta').textContent = ROTULO_AREA[item.area] || item.area;
+    clone.querySelector('h3').textContent = item.titulo;
+    clone.querySelector('.cartao__descricao').textContent = item.descricao;
+    clone.querySelector('.cartao__meta').textContent =
+      `${item.atendidos} pessoas atendidas | em atividade desde ${relativo(item.desde)}`;
 
     fragmento.appendChild(clone);
   });
@@ -62,28 +74,27 @@ export function renderizarPorTemplate(lista, alvo, template) {
 
 // --- Ligacao com o roteador -------------------------------------------------
 
-function preencherHome() {
-  const alvo = document.getElementById('lista-servicos');
-  const template = document.getElementById('tpl-cartao');
-  const filtro = document.getElementById('filtro-nivel');
+function preencherProjetos() {
+  const alvo = document.getElementById('lista-projetos');
+  const template = document.getElementById('tpl-projeto');
+  const filtro = document.getElementById('filtro-area');
 
   if (!alvo) return;
 
-  // A escolha anterior volta do localStorage assim que a home e renderizada.
+  // A escolha anterior volta do localStorage assim que a rota e renderizada.
   if (filtro) {
-    filtro.value = lerPreferencias().filtroNivel;
+    filtro.value = lerPreferencias().filtroArea;
   }
 
   const aplicar = () => {
-    const nivel = filtro ? filtro.value : 'todos';
-    if (filtro) gravarPreferencia('filtroNivel', nivel);
-    const lista = nivel === 'todos'
-      ? servicos
-      : servicos.filter((item) => item.nivel === nivel);
+    const area = filtro ? filtro.value : 'todos';
+    if (filtro) gravarPreferencia('filtroArea', area);
 
-    // O mesmo conjunto de dados alimenta as duas estrategias; aqui usamos a
-    // clonagem de <template>, que dispensa parse de HTML a cada filtragem.
-    renderizarPorTemplate(lista, alvo, template);
+    const lista = area === 'todos'
+      ? projetos
+      : projetos.filter((item) => item.area === area);
+
+    renderizarProjetos(lista, alvo, template);
   };
 
   if (filtro) {
@@ -93,17 +104,17 @@ function preencherHome() {
   aplicar();
 }
 
-function preencherSobre() {
+function preencherResumo() {
   // Marcacao estatica, montada pelo proprio projeto: aqui o Template Literal
   // com map/join e a opcao mais direta.
-  renderizarCartoes(servicos, document.getElementById('resumo-modulos'));
+  renderizarResumo(projetos, document.getElementById('resumo-projetos'));
 }
 
 export function iniciarTemplates() {
   // O conteudo e injetado pelo roteador, entao a montagem acontece sempre
   // que uma rota termina de renderizar.
   document.addEventListener('rota:renderizada', () => {
-    preencherHome();
-    preencherSobre();
+    preencherProjetos();
+    preencherResumo();
   });
 }

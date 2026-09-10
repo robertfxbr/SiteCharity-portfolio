@@ -1,8 +1,12 @@
-# Atividade 3 - Single Page Application em JavaScript modular
+# ONG Esperança Solidária
 
-Aplicacao de pagina unica construida sem framework, com roteamento client-side,
-geracao de componentes por template, validacao de formulario, persistencia em
-localStorage e integracao com biblioteca externa via CDN.
+Site institucional da ONG Esperança Solidária, construido como Single Page
+Application em JavaScript modular, sem framework. Apresenta a organizacao, os
+projetos sociais em andamento e os canais de doacao e voluntariado.
+
+A aplicacao usa roteamento client-side, geracao de componentes por template,
+validacao de formulario, persistencia em localStorage e integracao com
+biblioteca externa via CDN.
 
 ## Requisitos
 
@@ -16,7 +20,7 @@ Abrir o `index.html` por duplo clique nao funciona.
 
 ```bash
 git clone <url-do-repositorio>
-cd "Frontend atividade 3"
+cd sitecharity-portfolio
 python -m http.server 5500
 ```
 
@@ -26,20 +30,20 @@ Acesse `http://localhost:5500/html/index.html`.
 
 ```
 html/          index.html e os fragmentos de rota em /paginas
-css/           reset.css (normalizacao) e styles.css (regras autorais)
+css/           reset.css (normalizacao), design-system.css (tokens) e styles.css
 js/            main.js (orquestracao)
 js/modules/    router, templates, validacao, persistencia, tema, datas, menu
-js/dados/      fonte de dados em array de objetos
-imagens/       recursos graficos
+js/dados/      projetos.js, fonte de dados em array de objetos
+imagens/       fotos dos projetos e da acao social
 ```
 
 ## Rotas
 
 | Hash           | Fragmento              |
 |----------------|------------------------|
-| `#/`           | `paginas/home.html`    |
-| `#/sobre`      | `paginas/sobre.html`   |
-| `#/contato`    | `paginas/contato.html` |
+| `#/`           | `paginas/home.html`     |
+| `#/projetos`   | `paginas/projetos.html` |
+| `#/contato`    | `paginas/contato.html`  |
 | qualquer outro | `paginas/404.html`     |
 
 ## Arquitetura
@@ -47,7 +51,7 @@ imagens/       recursos graficos
 Quatro camadas, uma responsabilidade por arquivo e grafo de dependencias
 aciclico:
 
-- **Dados**: `js/dados/servicos.js`, sem conhecimento de DOM
+- **Dados**: `js/dados/projetos.js`, sem conhecimento de DOM
 - **Infraestrutura**: `persistencia.js` (unico que acessa localStorage) e
   `datas.js` (unico que acessa a biblioteca externa)
 - **Interface**: `router.js`, `templates.js`, `validacao.js`, `menu.js`, `tema.js`

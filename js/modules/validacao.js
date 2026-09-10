@@ -24,16 +24,16 @@ let jaTentouEnviar = false;
 // o usuario recebe uma mensagem por vez, a mais relevante.
 const REGRAS = {
   nome: [
-    { teste: (v) => v.trim() !== '', mensagem: 'O campo nome esta vazio.' },
+    { teste: (v) => v.trim() !== '', mensagem: 'O campo nome está vazio.' },
     { teste: (v) => PADRAO_NOME.test(v.trim()), mensagem: 'Use apenas letras, com ao menos 3 caracteres.' }
   ],
   email: [
-    { teste: (v) => v.trim() !== '', mensagem: 'O campo e-mail esta vazio.' },
-    { teste: (v) => PADRAO_EMAIL.test(v.trim()), mensagem: 'Formato invalido. Exemplo: nome@dominio.com' }
+    { teste: (v) => v.trim() !== '', mensagem: 'O campo e-mail está vazio.' },
+    { teste: (v) => PADRAO_EMAIL.test(v.trim()), mensagem: 'Formato inválido. Exemplo: nome@dominio.com' }
   ],
   mensagem: [
     { teste: (v) => v.trim() !== '', mensagem: 'Escreva sua mensagem.' },
-    { teste: (v) => v.trim().length >= 10, mensagem: 'A mensagem precisa de ao menos 10 caracteres.' },
+    { teste: (v) => v.trim().length >= 10, mensagem: 'Escreva ao menos 10 caracteres.' },
     { teste: (v) => v.trim().length <= 500, mensagem: 'Limite de 500 caracteres excedido.' }
   ]
 };
@@ -136,7 +136,7 @@ export function iniciarValidacao() {
       return;
     }
 
-    if (feedback) feedback.textContent = 'Mensagem enviada com sucesso.';
+    if (feedback) feedback.textContent = 'Mensagem enviada. A nossa equipe entra em contato em breve.';
     form.reset();
     limparEstados(form);
     remover(CHAVES.rascunho);
