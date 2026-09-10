@@ -4,6 +4,7 @@
 // Os ouvintes usam delegacao, porque o formulario e injetado pelo roteador
 // depois que o main.js ja executou.
 
+import { gravar, ler, remover, CHAVES } from './persistencia.js';
 
 // Expressoes regulares usadas nos criterios de formato.
 // Nome: apenas letras (inclusive acentuadas), espacos, apostrofo, ponto e
@@ -77,6 +78,31 @@ function limparEstados(form) {
   });
 }
 
+function coletar(form) {
+  return {
+    nome: form.elements.nome.value,
+    email: form.elements.email.value,
+    mensagem: form.elements.mensagem.value
+  };
+}
+
+function restaurar() {
+  const form = document.getElementById('form-contato');
+  const rascunho = ler(CHAVES.rascunho);
+  if (!form || !rascunho || !rascunho.campos) return;
+
+  Object.entries(rascunho.campos).forEach(([nome, valor]) => {
+    if (form.elements[nome]) {
+      form.elements[nome].value = valor;
+    }
+  });
+
+  const aviso = document.getElementById('feedback');
+  if (aviso) {
+    aviso.textContent = 'Rascunho recuperado do localStorage.';
+  }
+}
+
 export function iniciarValidacao() {
   // input: salva o rascunho a cada digitacao e revalida o campo alterado.
   document.addEventListener('input', (evento) => {
@@ -87,6 +113,7 @@ export function iniciarValidacao() {
     if (jaTentouEnviar) {
       validarCampo(campo);
     }
+    gravar(CHAVES.rascunho, { campos: coletar(form), salvoEm: Date.now() });
   });
 
   // submit: intercepta o envio nativo e decide o que acontece.
@@ -110,7 +137,10 @@ export function iniciarValidacao() {
     if (feedback) feedback.textContent = 'Mensagem enviada com sucesso.';
     form.reset();
     limparEstados(form);
+    remover(CHAVES.rascunho);
     jaTentouEnviar = false;
   });
 
+  // O formulario so existe apos a rota /contato ser renderizada.
+  document.addEventListener('rota:renderizada', restaurar);
 }
