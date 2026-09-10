@@ -60,6 +60,10 @@ export function renderizarProjetos(lista, alvo, template) {
     imagem.loading = 'lazy';
     imagem.src = item.imagem;
     imagem.alt = item.alt;
+
+    // Mesma imagem em WebP, oferecida ao navegador que a suporta. O JPEG do
+    // <img> continua sendo o fallback.
+    clone.querySelector('.cartao__webp').srcset = item.imagem.replace(/\.jpe?g$/i, '.webp');
     clone.querySelector('.etiqueta').textContent = ROTULO_AREA[item.area] || item.area;
     clone.querySelector('h3').textContent = item.titulo;
     clone.querySelector('.cartao__descricao').textContent = item.descricao;
