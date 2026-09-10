@@ -185,6 +185,16 @@ textarea:focus-visible {
   margin-top: var(--space-3);
 }
 
+/* Cabecalho de pagina e indice interno de blocos */
+
+.secao--pagina {
+  background-color: var(--color-neutral-0);
+  border: 1px solid var(--color-neutral-300);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-4);
+}
+
 /* Indice interno de blocos */
 
 .indice {
