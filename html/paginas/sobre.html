@@ -1,0 +1,25 @@
+<section class="secao">
+  <h1>Sobre o projeto</h1>
+  <p>
+    O objetivo da atividade e demonstrar a manipulacao do DOM em uma aplicacao de pagina unica,
+    respeitando a separacao de responsabilidades entre estrutura, apresentacao e comportamento.
+  </p>
+
+  <h2>Como o roteamento funciona</h2>
+  <ol class="lista-numerada">
+    <li>Os links do menu apontam para ancoras internas, como <code>#/sobre</code>.</li>
+    <li>O clique altera o hash da URL e o navegador dispara o evento <code>hashchange</code>.</li>
+    <li>A funcao <code>renderizar</code> le o hash e consulta a tabela de rotas.</li>
+    <li>O conteiner alvo e limpo e recebe o fragmento correspondente.</li>
+  </ol>
+
+  <h2>Por que hash e nao History API</h2>
+  <p>
+    Como o projeto e entregue em arquivos estaticos, um recarregamento em <code>/sobre</code> com
+    <code>pushState</code> resultaria em 404. Com hash, a rota sobrevive ao F5 e o historico do
+    navegador continua funcionando.
+  </p>
+
+  <h2>Modulos do projeto</h2>
+  <ul class="cartoes" id="resumo-modulos"></ul>
+</section>

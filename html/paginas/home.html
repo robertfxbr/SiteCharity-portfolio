@@ -1,0 +1,33 @@
+<section class="secao">
+  <h1>Single Page Application sem recarregar a pagina</h1>
+  <p>
+    Esta pagina troca de conteudo sem solicitar um novo documento ao servidor. A navegacao
+    altera apenas o fragmento da URL, e o roteador intercepta essa mudanca para injetar o
+    conteudo correspondente na div principal.
+  </p>
+
+  <div class="barra-filtro">
+    <label for="filtro-nivel">Filtrar por nivel</label>
+    <select id="filtro-nivel">
+      <option value="todos">Todos</option>
+      <option value="Basico">Basico</option>
+      <option value="Intermediario">Intermediario</option>
+      <option value="Avancado">Avancado</option>
+    </select>
+  </div>
+
+  <!-- Molde inerte: o navegador nao renderiza nem baixa recursos daqui dentro.
+       O script clona este conteudo uma vez para cada item da fonte de dados. -->
+  <template id="tpl-cartao">
+    <li class="cartao">
+      <span class="etiqueta"></span>
+      <h2></h2>
+      <p></p>
+      <small></small>
+    </li>
+  </template>
+
+  <ul class="cartoes" id="lista-servicos" aria-live="polite"></ul>
+
+  <a class="botao" href="#/contato">Ir para o formulario</a>
+</section>

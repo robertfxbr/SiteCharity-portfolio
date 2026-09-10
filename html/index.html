@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atividade 3 | Single Page Application</title>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <header class="cabecalho">
+    <a class="marca" href="#/">Atividade&nbsp;3</a>
+
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="menu">
+      <span class="menu-toggle__barra"></span>
+      <span class="visually-hidden">Abrir menu</span>
+    </button>
+
+    <button class="tema-toggle" id="tema-toggle" aria-pressed="false">Tema escuro</button>
+
+    <nav class="menu" id="menu">
+      <a class="nav-link" href="#/">Início</a>
+      <a class="nav-link" href="#/sobre">Sobre</a>
+      <a class="nav-link" href="#/contato">Contato</a>
+    </nav>
+  </header>
+
+  <main id="app" class="conteudo" tabindex="-1" aria-live="polite">
+    <p class="carregando">Carregando...</p>
+  </main>
+
+  <footer class="rodape">
+    <p>Projeto academico de front-end. Roteamento client-side com hash e manipulacao do DOM.</p>
+  </footer>
+
+  <!-- Biblioteca externa via CDN: core, plugin de tempo relativo e locale.
+       defer garante que os tres estejam avaliados antes do modulo principal,
+       sem bloquear a renderizacao do documento. -->
+  <script defer src="https://cdn.jsdelivr.net/npm/dayjs@1.11.10/dayjs.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/dayjs@1.11.10/plugin/relativeTime.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/dayjs@1.11.10/locale/pt-br.js"></script>
+
+  <script type="module" src="../js/main.js"></script>
+</body>
+</html>
