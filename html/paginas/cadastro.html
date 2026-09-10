@@ -15,20 +15,26 @@
 
       <div class="campo">
         <label for="nome-completo">Nome completo *</label>
-        <input type="text" id="nome-completo" name="nomeCompleto" autocomplete="name" aria-describedby="erro-nomeCompleto">
+        <input type="text" id="nome-completo" name="nomeCompleto" autocomplete="name"
+               required minlength="3" maxlength="80"
+               aria-describedby="erro-nomeCompleto">
         <span class="erro" id="erro-nomeCompleto" data-erro="nomeCompleto"></span>
       </div>
 
       <div class="campo">
         <label for="cpf">CPF *</label>
-        <input type="text" id="cpf" name="cpf" inputmode="numeric" maxlength="14"
+        <input type="text" id="cpf" name="cpf" inputmode="numeric"
+               required maxlength="14" pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}"
+               title="Formato esperado: 000.000.000-00"
                placeholder="000.000.000-00" aria-describedby="erro-cpf">
         <span class="erro" id="erro-cpf" data-erro="cpf"></span>
       </div>
 
       <div class="campo">
         <label for="nascimento">Data de nascimento *</label>
-        <input type="date" id="nascimento" name="nascimento" autocomplete="bday" aria-describedby="erro-nascimento">
+        <input type="date" id="nascimento" name="nascimento" autocomplete="bday"
+               required min="1915-01-01" max="2010-12-31"
+               aria-describedby="erro-nascimento">
         <span class="erro" id="erro-nascimento" data-erro="nascimento"></span>
       </div>
     </fieldset>
@@ -38,13 +44,17 @@
 
       <div class="campo">
         <label for="email-cadastro">E-mail *</label>
-        <input type="email" id="email-cadastro" name="email" autocomplete="email" aria-describedby="erro-email">
+        <input type="email" id="email-cadastro" name="email" autocomplete="email"
+               required maxlength="120"
+               aria-describedby="erro-email">
         <span class="erro" id="erro-email" data-erro="email"></span>
       </div>
 
       <div class="campo">
         <label for="telefone">Telefone *</label>
         <input type="tel" id="telefone" name="telefone" autocomplete="tel"
+               required maxlength="15" pattern="\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}"
+               title="Formato esperado: (11) 90000-0000"
                placeholder="(11) 90000-0000" aria-describedby="erro-telefone">
         <span class="erro" id="erro-telefone" data-erro="telefone"></span>
       </div>
@@ -55,26 +65,32 @@
 
       <div class="campo">
         <label for="cep">CEP *</label>
-        <input type="text" id="cep" name="cep" inputmode="numeric" maxlength="9"
-               placeholder="00000-000" autocomplete="postal-code" aria-describedby="erro-cep">
+        <input type="text" id="cep" name="cep" inputmode="numeric" autocomplete="postal-code"
+               required maxlength="9" pattern="[0-9]{5}-[0-9]{3}"
+               title="Formato esperado: 00000-000"
+               placeholder="00000-000" aria-describedby="erro-cep">
         <span class="erro" id="erro-cep" data-erro="cep"></span>
       </div>
 
       <div class="campo">
         <label for="endereco">Endereço *</label>
-        <input type="text" id="endereco" name="endereco" autocomplete="street-address" aria-describedby="erro-endereco">
+        <input type="text" id="endereco" name="endereco" autocomplete="street-address"
+               required minlength="5" maxlength="120"
+               aria-describedby="erro-endereco">
         <span class="erro" id="erro-endereco" data-erro="endereco"></span>
       </div>
 
       <div class="campo">
         <label for="cidade">Cidade *</label>
-        <input type="text" id="cidade" name="cidade" autocomplete="address-level2" aria-describedby="erro-cidade">
+        <input type="text" id="cidade" name="cidade" autocomplete="address-level2"
+               required minlength="3" maxlength="60"
+               aria-describedby="erro-cidade">
         <span class="erro" id="erro-cidade" data-erro="cidade"></span>
       </div>
 
       <div class="campo">
         <label for="estado">Estado *</label>
-        <select id="estado" name="estado" autocomplete="address-level1" aria-describedby="erro-estado">
+        <select id="estado" name="estado" autocomplete="address-level1" required aria-describedby="erro-estado">
           <option value="">Selecione</option>
           <option value="AC">Acre</option><option value="AL">Alagoas</option>
           <option value="AP">Amapá</option><option value="AM">Amazonas</option>
