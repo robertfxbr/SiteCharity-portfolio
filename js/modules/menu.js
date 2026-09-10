@@ -9,14 +9,24 @@ export function iniciarMenu() {
     return;
   }
 
-  botao.addEventListener('click', () => {
-    const aberto = menu.classList.toggle('aberto');
+  // O rotulo acessivel precisa acompanhar o estado do menu: quem usa leitor
+  // de tela ouvia "Abrir menu" mesmo com o menu ja aberto.
+  const rotulo = botao.querySelector('.visually-hidden');
+
+  function definirEstado(aberto) {
+    menu.classList.toggle('aberto', aberto);
     botao.setAttribute('aria-expanded', String(aberto));
+    if (rotulo) {
+      rotulo.textContent = aberto ? 'Fechar menu' : 'Abrir menu';
+    }
+  }
+
+  botao.addEventListener('click', () => {
+    definirEstado(!menu.classList.contains('aberto'));
   });
 
   // Ao trocar de rota, o menu mobile se fecha sozinho.
   document.addEventListener('rota:renderizada', () => {
-    menu.classList.remove('aberto');
-    botao.setAttribute('aria-expanded', 'false');
+    definirEstado(false);
   });
 }
