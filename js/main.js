@@ -7,8 +7,10 @@ import { iniciarMenu } from './modules/menu.js';
 import { iniciarValidacao } from './modules/validacao.js';
 import { iniciarTemplates } from './modules/templates.js';
 import { iniciarTema } from './modules/tema.js';
+import { iniciarDatas } from './modules/datas.js';
 
 function iniciar() {
+  iniciarDatas();
   iniciarTema();
   iniciarMenu();
   iniciarValidacao();
