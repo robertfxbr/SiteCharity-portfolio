@@ -144,6 +144,8 @@ arquivo e tres folhas de estilo viram outra.
 
 ## Deploy
 
+Site publicado: https://robertfxbr.github.io/SiteCharity-portfolio/
+
 Publicado no GitHub Pages pelo workflow `.github/workflows/deploy.yml`, que
 roda a cada push na `main`. O job de build gera o `dist/`, confere que os
 arquivos essenciais existem e sobe o artefato; o job de deploy publica.
@@ -189,7 +191,17 @@ A passada com o conjunto best-practice, mais rigoroso que a norma, tambem
 retornou zero violacoes.
 
 Auditoria automatizada cobre parte dos criterios, nao todos. O teste com leitor
-de tela real segue pendente na issue #12.
+de tela real foi feito a parte, com NVDA no Windows, cobrindo os tres cenarios
+que dependem de codigo proprio:
+
+1. Troca de rota: o conteudo novo e anunciado, confirmando o foco movido para o
+   main e o aria-live
+2. Ancora do indice de blocos: o foco vai para a secao e a rota permanece em
+   #/projetos
+3. Formulario invalido: o rotulo e lido seguido da mensagem de erro, via
+   aria-describedby
+
+Registro na issue #12.
 
 A ausencia de testes automatizados esta registrada na issue #11, com a lista dos
 modulos a cobrir primeiro.
