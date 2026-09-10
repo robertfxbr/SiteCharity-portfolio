@@ -7,6 +7,7 @@ const PREFIXO = 'atividade3:';
 
 export const CHAVES = {
   rascunho: PREFIXO + 'rascunho-contato',
+  rascunhoCadastro: PREFIXO + 'rascunho-cadastro',
   preferencias: PREFIXO + 'preferencias'
 };
 
