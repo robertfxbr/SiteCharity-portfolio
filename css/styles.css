@@ -335,3 +335,28 @@ code {
   color: var(--cor-texto-suave);
   font-style: italic;
 }
+
+/* Estados de validacao do formulario */
+
+.campo.invalido input,
+.campo.invalido textarea {
+  border-color: var(--cor-erro);
+  background-color: #fdf3f2;
+}
+
+.campo.valido input,
+.campo.valido textarea {
+  border-color: var(--cor-sucesso);
+}
+
+.campo.valido label::after {
+  content: " ok";
+  color: var(--cor-sucesso);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.campo.invalido .erro::before {
+  content: "! ";
+  font-weight: 700;
+}

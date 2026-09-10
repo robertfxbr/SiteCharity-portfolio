@@ -4,10 +4,12 @@
 
 import { iniciarRotas } from './modules/router.js';
 import { iniciarMenu } from './modules/menu.js';
+import { iniciarValidacao } from './modules/validacao.js';
 import { iniciarTemplates } from './modules/templates.js';
 
 function iniciar() {
   iniciarMenu();
+  iniciarValidacao();
   iniciarTemplates();
   iniciarRotas();
 }
