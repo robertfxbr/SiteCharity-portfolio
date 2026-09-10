@@ -81,6 +81,38 @@ dependencia circular entre roteamento e interface.
 Se a CDN estiver indisponivel, o modulo de datas cai em `Date` e
 `toLocaleString`, e a aplicacao continua funcional.
 
+## Acessibilidade (WCAG 2.1 nivel AA)
+
+Medidas implementadas e o criterio que cada uma atende:
+
+| Recurso | Criterio |
+|---|---|
+| Link "Pular para o conteudo", visivel ao foco | 2.4.1 Ignorar blocos |
+| Indice de blocos por ancora na pagina de projetos | 2.4.1 / 2.4.5 |
+| Marcos semanticos: header, nav, main e footer | 1.3.1 Informacao e relacoes |
+| Um h1 por rota, hierarquia sem saltos de nivel | 1.3.1 / 2.4.6 |
+| Foco movido para o conteudo a cada troca de rota | 2.4.3 Ordem de foco |
+| Anel de foco proprio com `:focus-visible` | 2.4.7 Foco visivel |
+| `aria-describedby` ligando campo e mensagem de erro | 3.3.1 Identificacao de erro |
+| Mensagens que explicam como corrigir | 3.3.3 Sugestao de correcao |
+| `aria-invalid`, `aria-expanded`, `aria-current`, `aria-pressed` | 4.1.2 Nome, funcao, valor |
+| `aria-live` no conteudo e no retorno do formulario | 4.1.3 Mensagens de status |
+| `width`, `height` e `alt` em todas as imagens | 1.1.1 / 1.4.10 |
+| `prefers-reduced-motion` desativando animacoes | 2.3.3 Animacao por interacao |
+
+Contrastes medidos (minimo AA: 4.5:1 para texto, 3:1 para componentes):
+
+| Elemento | Tema claro | Tema escuro |
+|---|---|---|
+| Texto corrido | 12.36:1 | 9.58:1 |
+| Titulos | 12.36:1 | 14.04:1 |
+| Botao de doacao | 5.73:1 | 9.93:1 |
+| Item ativo do menu | 7.88:1 | 9.10:1 |
+| Mensagem de erro | 5.44:1 | 7.88:1 |
+| Mensagem de sucesso | 6.59:1 | 8.81:1 |
+| Borda de campo | 4.54:1 | 3.99:1 |
+| Anel de foco | 12.36:1 | 8.62:1 |
+
 ## Fluxo de versionamento
 
 Padrao GitFlow: `main` guarda as versoes publicadas, `develop` concentra o
