@@ -174,6 +174,23 @@ npm run preview        # serve dist/ em http://localhost:5000
 Validacao externa: HTML pelo Nu Html Checker e CSS pelo Jigsaw, ambos com zero
 erros na ultima execucao.
 
+Auditoria automatizada de acessibilidade com axe-core 4.10.2, o mesmo motor
+usado pelo Lighthouse, aplicando as regras wcag2a, wcag2aa, wcag21a e wcag21aa:
+
+| Estado auditado | Violacoes | Regras aprovadas |
+|---|---|---|
+| Rota inicial, tema claro e escuro | 0 | 19 |
+| Rota de projetos, tema claro e escuro | 0 | 21 |
+| Rota de cadastro, tema claro e escuro | 0 | 23 |
+| Rota de contato, tema claro e escuro | 0 | 23 |
+| Cadastro com seis campos em erro | 0 | 39 |
+
+A passada com o conjunto best-practice, mais rigoroso que a norma, tambem
+retornou zero violacoes.
+
+Auditoria automatizada cobre parte dos criterios, nao todos. O teste com leitor
+de tela real segue pendente na issue #12.
+
 A ausencia de testes automatizados esta registrada na issue #11, com a lista dos
 modulos a cobrir primeiro.
 
