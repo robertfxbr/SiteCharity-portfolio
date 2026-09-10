@@ -88,7 +88,7 @@ p { color: var(--color-neutral-600); }
 }
 
 .tema-toggle {
-  border: 1px solid var(--color-neutral-300);
+  border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-md);
   padding: var(--space-1) var(--space-2);
   font-size: var(--font-size-caption);
@@ -105,7 +105,7 @@ p { color: var(--color-neutral-600); }
   width: 44px;
   height: 44px;
   border-radius: var(--radius-md);
-  border: 1px solid var(--color-neutral-300);
+  border: 1px solid var(--color-border-strong);
   position: relative;
 }
 
@@ -131,7 +131,7 @@ button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 3px solid var(--color-secondary);
+  outline: 3px solid var(--color-focus);
   outline-offset: 2px;
 }
 
@@ -185,6 +185,21 @@ textarea:focus-visible {
   margin-top: var(--space-3);
 }
 
+/* Indice interno de blocos */
+
+.indice {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.indice a {
+  text-decoration: underline;
+  color: var(--color-primary-dark);
+  font-weight: var(--font-weight-semibold);
+}
+
 /* Botoes */
 
 .botao {
@@ -199,11 +214,11 @@ textarea:focus-visible {
 }
 
 .botao--destaque {
-  background-color: var(--color-secondary-dark);
-  color: var(--color-neutral-0);
+  background-color: var(--color-secondary);
+  color: var(--color-primary-dark);
 }
 
-.botao--destaque:hover { background-color: #a86a13; }
+.botao--destaque:hover { background-color: #F0B45C; }
 
 .botao--contorno {
   border-color: var(--color-primary);
@@ -273,7 +288,7 @@ textarea:focus-visible {
 
 .barra-filtro select,
 .campo select {
-  border: 1px solid var(--color-neutral-300);
+  border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-md);
   padding: var(--space-1) var(--space-2);
   background-color: var(--color-neutral-0);
@@ -337,7 +352,7 @@ textarea:focus-visible {
 
 .campo input,
 .campo textarea {
-  border: 1px solid var(--color-neutral-300);
+  border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-md);
   padding: var(--space-1) var(--space-2);
   background-color: var(--color-neutral-0);
@@ -372,7 +387,7 @@ textarea:focus-visible {
 
 .feedback {
   font-weight: var(--font-weight-semibold);
-  color: var(--color-success);
+  color: var(--color-success-text);
   min-height: 1.2em;
 }
 
@@ -432,7 +447,15 @@ html[data-tema="escuro"] {
   --shadow-card: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
+html[data-tema="escuro"] {
+  --color-success-text: #6BD68F;
+  --color-border-strong: #70847A;
+  --color-focus: #F0B45C;
+}
+
 html[data-tema="escuro"] .nav-link.ativo { color: #101614; }
+html[data-tema="escuro"] .botao--destaque { color: #101614; }
+html[data-tema="escuro"] .botao--destaque:hover { background-color: #F7CE8C; }
 
 html[data-tema="escuro"] .campo.invalido input,
 html[data-tema="escuro"] .campo.invalido textarea {
