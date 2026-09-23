@@ -133,12 +133,12 @@ Resultado da ultima execucao:
 
 | Recurso | Antes | Depois | Reducao |
 |---|---|---|---|
-| JavaScript (10 arquivos) | 19,8 kB | 7,6 kB | 61% |
-| CSS (3 arquivos) | 15,3 kB | 10,1 kB | 33% |
-| index.html | 2,2 kB | 1,7 kB | 25% |
-| Fragmentos de rota | 6,7 kB | 5,7 kB | 14% |
-| Imagens (4 arquivos) | 70,3 kB | 39,2 kB | 44% |
-| **Total** | **114,3 kB** | **64,3 kB** | **44%** |
+| JavaScript (10 arquivos) | 24,4 kB | 11,0 kB | 55% |
+| CSS (3 arquivos) | 15,8 kB | 10,5 kB | 33% |
+| index.html | 2,3 kB | 1,7 kB | 25% |
+| Fragmentos de rota | 13,8 kB | 11,6 kB | 16% |
+| Imagens (4 arquivos) | 133,8 kB | 109,4 kB | 18% |
+| **Total** | **190,1 kB** | **144,3 kB** | **24%** |
 
 Requisicoes na primeira carga caem de 15 para 5, ja que dez modulos viram um
 arquivo e tres folhas de estilo viram outra.
@@ -227,6 +227,21 @@ Registro na issue #12.
 Padrao GitFlow: `main` guarda as versoes publicadas, `develop` concentra o
 desenvolvimento, `feature/*` isola cada funcionalidade, `release/*` prepara o
 lancamento e `hotfix/*` corrige falhas a partir de `main`.
+
+## Creditos das imagens
+
+As fotos dos projetos vem do Unsplash e seguem a
+[licenca Unsplash](https://unsplash.com/license), que permite uso gratuito sem
+exigir atribuicao. O credito fica registrado mesmo assim.
+
+| Arquivo | Autor | Origem |
+|---|---|---|
+| `projeto-educacao.jpg` | Rewired Digital | [Unsplash](https://unsplash.com/photos/rk57BkkhCaE) |
+| `projeto-alimentacao.jpg` | Joel Muniz | [Unsplash](https://unsplash.com/photos/3k3l2brxmwQ) |
+| `projeto-saude.jpg` | Carlos Magno | [Unsplash](https://unsplash.com/photos/7-fAqdVcbAw) |
+
+As originais foram recortadas em 600x360, a dimensao declarada no template dos
+cartoes, entao a troca nao provoca deslocamento de layout.
 
 ## Licenca
 
