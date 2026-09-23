@@ -1,6 +1,6 @@
 {
   "name": "ong-esperanca-solidaria",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "Site institucional da ONG Esperanca Solidaria: SPA em JavaScript modular, sem framework.",
   "private": true,
   "type": "module",
