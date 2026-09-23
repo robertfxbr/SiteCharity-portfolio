@@ -7,10 +7,12 @@
   "scripts": {
     "dev": "npx --yes serve@14 . -l 5500",
     "build": "node build.js",
-    "preview": "npx --yes serve@14 dist -l 5000"
+    "preview": "npx --yes serve@14 dist -l 5000",
+    "test": "node --test \"testes/**/*.test.js\""
   },
   "devDependencies": {
     "esbuild": "^0.25.0",
+    "jsdom": "^26.1.0",
     "sharp": "^0.35.4"
   },
   "license": "MIT"

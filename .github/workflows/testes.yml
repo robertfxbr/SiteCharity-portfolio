@@ -1,0 +1,29 @@
+name: Testes
+
+# Roda a suite em todo push de branch de trabalho e em todo pull request,
+# para que a falha apareca antes do merge, e nao so no deploy.
+on:
+  push:
+    branches: [develop, 'feature/**', 'release/**', 'hotfix/**']
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  testes:
+    name: Unidade e interface
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Rodar os testes
+        run: npm test

@@ -35,6 +35,7 @@ js/            main.js (orquestracao)
 js/modules/    router, templates, validacao, persistencia, tema, datas, menu
 js/dados/      projetos.js, fonte de dados em array de objetos
 imagens/       fotos dos projetos e da acao social
+testes/        unidade/ (modulos puros), interface/ (jsdom) e apoio/
 ```
 
 ## Rotas
@@ -158,20 +159,38 @@ devolve a aplicacao, que entao resolve a rota pelo hash.
 
 ## Verificacao e testes
 
-O projeto ainda nao tem suite automatizada. A verificacao e manual e segue este
-roteiro a cada alteracao relevante:
+```bash
+npm install
+npm test
+```
+
+A suite usa o executor nativo do Node (`node:test`, Node 22 ou superior) e o
+jsdom para os testes de interface. Sao 55 testes em duas camadas:
+
+| Camada | Arquivo | O que cobre |
+|---|---|---|
+| Unidade | `testes/unidade/validacao.test.js` | digitos verificadores do CPF, calculo de idade na vespera e no dia do aniversario, ordem das cadeias de regras |
+| Unidade | `testes/unidade/persistencia.test.js` | JSON corrompido, tipo divergente, chave ausente, cota estourada, gravacao parcial de preferencias |
+| Unidade | `testes/unidade/mascaras.test.js` | CPF, telefone fixo e celular e CEP, completos e durante a digitacao |
+| Interface | `testes/interface/rotas.test.js` | troca de rota, foco no main, link ativo, 404, falha de rede, filtro persistido, menu e tema |
+| Interface | `testes/interface/formularios.test.js` | envio vazio, CPF repetido, revalidacao por digitacao, rascunho recuperado e envio valido |
+
+Os testes de interface sobem o `html/index.html` real no jsdom e servem os
+fragmentos direto do disco, entao exercitam o mesmo codigo que roda no
+navegador. O workflow `testes.yml` roda a suite em todo push e pull request, e
+o `deploy.yml` so publica se ela passar.
+
+O que o jsdom nao cobre (layout, contraste, leitor de tela) continua no roteiro
+manual, a cada alteracao visual:
 
 ```bash
 npm run build          # aborta se a reescrita de caminhos falhar
 npm run preview        # serve dist/ em http://localhost:5000
 ```
 
-1. Percorrer as quatro rotas e conferir o console sem erros
-2. Filtrar projetos por area e recarregar: a escolha deve voltar do localStorage
-3. Enviar os dois formularios vazios e conferir as mensagens por campo
-4. Enviar o cadastro com CPF de digitos repetidos, que deve ser recusado
-5. Navegar so pelo teclado, comecando pelo link de salto
-6. Alternar o tema e recarregar: a preferencia deve persistir
+1. Percorrer as rotas e conferir o console sem erros
+2. Navegar so pelo teclado, comecando pelo link de salto
+3. Conferir os dois temas nas larguras de celular e desktop
 
 Validacao externa: HTML pelo Nu Html Checker e CSS pelo Jigsaw, ambos com zero
 erros na ultima execucao.
@@ -202,9 +221,6 @@ que dependem de codigo proprio:
    aria-describedby
 
 Registro na issue #12.
-
-A ausencia de testes automatizados esta registrada na issue #11, com a lista dos
-modulos a cobrir primeiro.
 
 ## Fluxo de versionamento
 
