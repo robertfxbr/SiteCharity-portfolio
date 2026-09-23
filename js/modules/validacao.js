@@ -20,7 +20,7 @@ function digitos(valor) {
 
 // Validacao real de CPF: alem do formato, confere os dois digitos
 // verificadores. Sem isso, 111.111.111-11 passaria por ter 11 numeros.
-function cpfValido(valor) {
+export function cpfValido(valor) {
   const numeros = digitos(valor);
   if (numeros.length !== 11) return false;
   if (/^(\d)\1{10}$/.test(numeros)) return false;
@@ -37,12 +37,13 @@ function cpfValido(valor) {
   return calcular(9) === Number(numeros[9]) && calcular(10) === Number(numeros[10]);
 }
 
-function idade(dataIso) {
+// A data de referencia e parametro para que os testes possam fixar o "hoje"
+// e cobrir a vespera e o dia do aniversario.
+export function idade(dataIso, hoje = new Date()) {
   if (!dataIso) return NaN;
   const nascimento = new Date(dataIso + 'T00:00:00');
   if (Number.isNaN(nascimento.getTime())) return NaN;
 
-  const hoje = new Date();
   let anos = hoje.getFullYear() - nascimento.getFullYear();
   const mes = hoje.getMonth() - nascimento.getMonth();
   if (mes < 0 || (mes === 0 && hoje.getDate() < nascimento.getDate())) anos -= 1;
@@ -52,7 +53,7 @@ function idade(dataIso) {
 // Cada campo tem uma cadeia de criterios avaliados em ordem: preenchimento,
 // depois formato, depois regra de negocio. A primeira falha interrompe a
 // cadeia, entao o usuario recebe uma mensagem por vez, a mais relevante.
-const REGRAS_CONTATO = {
+export const REGRAS_CONTATO = {
   nome: [
     { teste: (v) => v.trim() !== '', mensagem: 'O campo nome está vazio.' },
     { teste: (v) => PADRAO_NOME.test(v.trim()), mensagem: 'Use apenas letras, com ao menos 3 caracteres.' }
@@ -68,7 +69,7 @@ const REGRAS_CONTATO = {
   ]
 };
 
-const REGRAS_CADASTRO = {
+export const REGRAS_CADASTRO = {
   nomeCompleto: [
     { teste: (v) => v.trim() !== '', mensagem: 'Informe o nome completo.' },
     { teste: (v) => PADRAO_NOME.test(v.trim()), mensagem: 'Use apenas letras, com ao menos 3 caracteres.' },
@@ -147,13 +148,20 @@ function definirEstado(campo, mensagem) {
   campo.setAttribute('aria-invalid', String(invalido));
 }
 
+// Parte pura da validacao: devolve a mensagem do primeiro criterio que falha,
+// ou string vazia se o valor passar pela cadeia inteira.
+export function primeiraFalha(cadeia, valor) {
+  const falha = cadeia.find((regra) => !regra.teste(valor));
+  return falha ? falha.mensagem : '';
+}
+
 function validarCampo(campo, regras) {
   const cadeia = regras[campo.name];
   if (!cadeia) return true;
 
-  const falha = cadeia.find((regra) => !regra.teste(campo.value));
-  definirEstado(campo, falha ? falha.mensagem : '');
-  return !falha;
+  const mensagem = primeiraFalha(cadeia, campo.value);
+  definirEstado(campo, mensagem);
+  return !mensagem;
 }
 
 function validarFormulario(form, regras) {

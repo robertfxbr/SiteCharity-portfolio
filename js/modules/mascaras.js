@@ -11,7 +11,7 @@ function somenteDigitos(valor) {
   return valor.replace(/\D/g, '');
 }
 
-function mascaraCpf(valor) {
+export function mascaraCpf(valor) {
   const d = somenteDigitos(valor).slice(0, 11);
   return d
     .replace(/^(\d{3})(\d)/, '$1.$2')
@@ -19,13 +19,13 @@ function mascaraCpf(valor) {
     .replace(/\.(\d{3})(\d{1,2})$/, '.$1-$2');
 }
 
-function mascaraCep(valor) {
+export function mascaraCep(valor) {
   const d = somenteDigitos(valor).slice(0, 8);
   return d.replace(/^(\d{5})(\d)/, '$1-$2');
 }
 
 // Aceita fixo com 10 digitos e celular com 11.
-function mascaraTelefone(valor) {
+export function mascaraTelefone(valor) {
   const d = somenteDigitos(valor).slice(0, 11);
   if (d.length <= 10) {
     return d
